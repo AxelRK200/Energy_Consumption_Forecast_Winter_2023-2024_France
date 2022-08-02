@@ -52,8 +52,49 @@ En voici un exemple :<br/>
 <br/>
 <p>
 Le modèle hybride de ce projet fonctionne de la manière suivante :
-<li>Identification de la **tendance** avec une régression linéaire</li>
-<li>Identification et projection de la **saisonnalité**, avec une décomposition du signal en transformée de Fourrier. Et Regression sur celle-ci</li>
-<li>Prédiction des **résidus** avec LightGBM, un framework d'amplification de gradient basé sur des arbres de décision.</li>
+  <li>Identification de la <b>tendance</b> avec une régression linéaire</li>
+<li>Identification et projection de la <b>saisonnalité</b>, avec une décomposition du signal en transformée de Fourrier. Et régression sur celle-ci</li>
+</p>
+<br/>
+### Décomposition du signal avec transformée de Fourier
+L'objet de cette étape, et le point fort de cette approche, est de décompser notre saisonnalité en plusieurs fonctions sinusoïdales, d'amplitudes différentes, afin que leur consolidation s'ajuste au mieux à la saisonnalité que nous essayons de capter.<br/>
+En image, voici par exemple une décomposition en 4 séries, qui s'adapte à une saisonnalité annuelle.<br/>
+![Fourier](images/fourier.png)<br/>
+<i>(chaque courbe de couleur représentant une année)</i>
 </p>
 
+<br/>
+
+### Prédiction statique ou dynamique
+A l'issue du Notebook 3 (Saisonnalité), deux approches pour la prédiction des résidus,et donc du résultat final sont alors possibles :<br/>
+<li>Une prévision dynamique, basée sur la correlation partielle et l'auto correlation des données (dans notre cas) de l'heure précédente, du jour précédent, et de la semaine précédente.<br/>La limite de cette approche est qu'il n'est pas possible de faire une prédiciton à l'horizon 2024, sur une base horaire, ou alors avec une incertitude (ou erreurs cumulées au fur et à mesure des prédictions) qui n'est pas pertinente.<br/>
+Ce modèle est conçu pour être joué toutes les heures, ajuster ses prévisions, et détecter un éventuel emballement de consommation à court-moyen terme.</li><br/>
+<li>Le second modèle, qui utilise <b>LightGBM</b>, un framework d'amplification de gradient basé sur des arbres de décision.pour la prédiction des résidus peut lui se projeter à bien plus long terme, au prix d'une précision moindre.</li>
+
+<br/>
+
+### Etapes réalisées dans les Notebooks
+
+Identification de la Tendance : 
+![Tendance](images/trend.png)
+
+<br/>
+
+Identification de la Saisonnalité : 
+![Saisonnalité](images/saisonnalité.png)
+
+<br/>
+
+Prédiction dynamique des Rédidus : 
+![Résidus dynamiques](images/résidus_dynamiques.png)
+
+
+<br/>
+
+Prédiction statique des Résidus : 
+![Résidus statitiques](images/résidus.png)
+
+<br/>
+
+Prédiction 31/12/2023 (statique) : 
+![Prédiction finale](images/forecast_final.png)
