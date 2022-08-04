@@ -38,7 +38,7 @@ Sur la base du modèle hybride entraîné<sup>(1)</sup>, nous arrivons à l'esti
 
 <sup>(1)</sup> Ce modèle hybride, aussi appelé 'ensemble' selon la littérature, est une combinaison de deux modèles.<br/>
 <sup>(2)</sup> A minima, car notre modèle à tendance à volontairement sous-evaluer les pics, bien qu'à s'en rapprocher avec le plus de précision possible.<br/>
-<i>La MAE (Mean Average Error / Erreur Absolue Moyenne) est de +/- 3,02 GW pour ce modèle, en l'état actuel de ses paramètres.</i>
+<i>La MAE (Mean Absolute Error / Erreur Absolue Moyenne) est de +/- 3,02 GW pour ce modèle, en l'état actuel de ses paramètres.</i>
 
 <br />
 
