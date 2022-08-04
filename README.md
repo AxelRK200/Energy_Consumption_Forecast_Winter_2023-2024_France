@@ -55,7 +55,9 @@ Le modèle hybride de ce projet fonctionne de la manière suivante :
   <li>Identification de la <b>tendance</b> avec une régression linéaire</li>
 <li>Identification et projection de la <b>saisonnalité</b>, avec une décomposition du signal en transformée de Fourrier. Et régression sur celle-ci</li>
 </p>
+
 <br/>
+
 ### Décomposition du signal avec transformée de Fourier
 L'objet de cette étape, et le point fort de cette approche, est de décompser notre saisonnalité en plusieurs fonctions sinusoïdales, d'amplitudes différentes, afin que leur consolidation s'ajuste au mieux à la saisonnalité que nous essayons de capter.<br/>
 En image, voici par exemple une décomposition en 4 séries, qui s'adapte à une saisonnalité annuelle.<br/>
